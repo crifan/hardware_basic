@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<glossary
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+
+    xml:id="glossary">
+<title>缩略词</title>
+
+<glossentry id="IC"><glossterm>IC</glossterm>
+    <acronym>IC</acronym>
+    <glossdef>
+      <para>Integrated Circuit</para>
+      <para>集成电路</para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="XOR"><glossterm>XOR</glossterm>
+    <acronym>XOR</acronym>
+    <glossdef>
+      <para>eXclusive-OR</para>
+    </glossdef>
+</glossentry>
+
+</glossary>

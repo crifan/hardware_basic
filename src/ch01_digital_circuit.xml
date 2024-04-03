@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+
+    xml:id="ch01_digital_circuit">
+<title>数字电路</title>
+<abstract></abstract>
+
+<sect1><title>组合逻辑（Combinational Logic）</title>
+    <sect2><title>基本的逻辑功能和门电路</title>
+        <para>逻辑元素或表达式条件，总是有个结果，“0”或者“1”。</para>
+        <para>同样，我们也要实现将不同的逻辑信号或条件表达式，合并在一起，然后输出一个逻辑结果。</para>
+        <para>例如，对于这个逻辑表达“如果我把墙上的开关拨上去，那么灯就会亮。”咋一看，这好像是一个正确的句子，但是如果我们仔细考虑一下其他一些因素，我们就会发现其实远不止这些。此例中，更加完整的表达语句可以是“如果我把墙上的开关拨上去，并且灯泡是好的，电源也是开着的，这时候，灯才会亮”。</para>
+        <para>如果把上面这两句看作是逻辑表述的话，用逻辑术语来说，第一句可以归纳为：</para>
+        <para><emphasis>灯亮 = 开关</emphasis></para>
+        <para>即，灯亮的条件中，除了开关打开之外，没有其他依赖条件了，所以如果开关是向上的/打开的/真/1，灯就是亮的，打开的/真/1。相反地，如果开关是向下的/关闭的/假的/0的，灯就不会亮，关闭的/假的/0。</para>
+        <para>通常，我们不使用文字，而是使用符号来表示“与”的功能。此处，用“与”，将上述表达中的这几个单独的变量：开关，灯泡，电源，合并起来。</para>
+        <para>“与”的符号是一个点，其中有些表达式中的相乘的功能，也是用点来表示。</para>
+        <para>用此符号来表示上述表达式就是：</para>
+        <para><emphasis>灯亮 = 开关 • 灯泡 • 电源</emphasis></para>
+        <para>当我们在讨论逻辑电路的时候，比如计算机中的逻辑电路，我们不仅仅需要处理逻辑功能，我们同样需要有些特殊符号，用于表示逻辑图表中的这些逻辑功能。</para>
+        <para>其中有三种最基本的逻辑操作，而其他的功能，无论多么复杂，都可以从这三种基本逻辑操作去推导出来。</para>
+        <para>这三个逻辑操作就是：与And，或Or，非Not。</para>
+        <para>每一个逻辑操作，都有一个特定的符号来表示，都对应一个特定的行为，如下详解：</para>
+        
+        <sect3><title>与门 AND Gate</title>
+            <figure id="fg.and_gate"><title>AND与门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/and_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/and_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>与门用于实现逻辑与的功能。</para>
+            <para>必须是两个输入都是逻辑真值1，输出才会是真值1。</para>
+            <para>有任何一个输入是逻辑假值0，输出都是0。</para>
+            <para>逻辑与的功能，对于输入的的个数，没有限制，所以与门的输入，理论上也是没有限制的。</para>
+            <para>只是实际上，商业上所应用的逻辑与门的输入个数，是2,3或4个。</para>
+            <para>为了实际情况中，为了方便处理其大小，一个标准的集成电路（IC）一般包含14或16个引脚（pin）。</para>
+        </sect3>
+        
+        <sect3><title>或门 OR Gate</title>
+            <para>逻辑或OR门，有点像逻辑与的取反。</para>
+            <para>逻辑或，见名知意，如果任何一个输入是真值1，那么输出都是真值1。</para>
+            <para>就像我们可以说，如果下雨了，或者开了洒水车，草坪就会变湿。可以看到，即使是下雨的同时，也开了洒水车，那么草坪仍然会变湿。</para>
+            <para>这种表述，可以正好反映出逻辑或的功能。</para>
+            <para>OR的符号，是用正号，加号，“+”来表示的。</para>
+            <para>而对应的逻辑或门，用下图中的图形来表示：</para>
+            <figure id="fg.or_gate"><title>OR或门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/or_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/or_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>和逻辑与门类似，逻辑或的输入个数也是不限的。</para>
+            <para>不过和逻辑与门类似，实际上常用的逻辑或门的输入个数是2,3或4个。</para>
+        </sect3>
+        
+        <sect3><title>非门 NOT Gate/反相器Inverter</title>
+            <para>反相器和与门、或门都有点不一样，其有且只有一个输入和一个输出，输出的值是输入值的相反的状态。</para>
+            <para>逻辑非的功能，在其他很多引用中都用到了，很有用。</para>
+            <para>例如，一种可能的实际情况是：</para>
+            <para><emphasis>门没有锁上 = 你可以进来</emphasis></para>
+            <para>非门的符号表示，参见下图：</para>
+            <figure id="fg.not_gate"><title>NOT非门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/not_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/not_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>有些情况下，用单引号‘来表示取反。</para>
+            <para>比如0’ =1，1’=0。,3或4个。</para>
+            <para>在逻辑表达式中，更多的是常用上横线（overbar），即一个逻辑值头上，加上一个横线，来表示取反。</para>
+            
+            <sect4><title>非门的逻辑符号，即三角形加上圆圈，的含义</title>
+                <para>在上述非门的逻辑符号中，其中的三角形实际上是表示一个放大器（amplifier），在数字信号领域中，其意味着“清理”信号，但是并不改变其逻辑值。在输出端有个圆圈，其表示逻辑取反。</para>
+                <para>其实，此圆圈，也可以放在输入端，此时逻辑值没有变化，也是一样的。</para>
+                <para>上述中的三种逻辑门电路，可以根据应用的复杂度的不同，而有不同的组合起来实现对应的应用。</para>
+                <para>其中，由于有些功能被用的太频繁了，所以才会将他们单独命名，有自己的对应的符号以表示此功能，此功能，也是被打包成一个逻辑功能单元，以实现特定的功能。</para>
+                <para>而接下来，就是详细介绍这些，从基本的三种逻辑门电路中，演化出来的各种功能的电路。</para>
+            </sect4>
+        </sect3>
+    </sect2>
+    
+    <sect2><title>一些基本的衍生出来的门电路</title>
+        <para>虽然三种基本的门电路，AND，OR和NOT，足够用于实现所有的可能的逻辑功能和操作，但是由于其中一些组合被用到的太多，以至于我们单独将这些组合指定了相应的名称。</para>
+        <para>下面就是来讨论这些组合逻辑。</para>
+        <para>先讨论其中的三种。</para>
+        <orderedlist>
+            <listitem>第一个叫做与非门NAND，是由一个AND功能，再加上一个NOT功能所组成的。</listitem>
+            <listitem>第二个叫做或非门NOR，由一个OR功能，加上一个NOT所组成。</listitem>
+            <listitem>第三个是OR功能的变体，异或XOR（Exclusive-OR）。</listitem>
+        </orderedlist>
+        <para>像三种基本的逻辑门一样，这三个衍生出来的门电路，也有其对应的名称，下面分别对其进行简单总结：</para>
+        
+        <sect3><title>NAND与非门</title>
+            <para>与非门实现了异或的功能，其就是之前所学的AND功能的取反而得。</para>
+            <para>其符号表示参见下图：</para>
+            <figure id="fg.nand_gate"><title>NAND与非门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/nand_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/nand_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>只有两个输入都是为逻辑1的时候，输出才是逻辑0。</para>
+            <para>两者中的任何一个输入是逻辑0的话，那么输出都是逻辑1。</para>
+            <para>NAND门的符号中的圆圈，表示取反的意思，对输出进行取反。</para>
+            <para>需要注意的是，上图中，上横线，是实心的，且是对于两个输入都一次性地覆盖到了，这表示，是对AND功能本身进行取反，而不是分别对两个输入去取反。</para>
+            <para>对于AND，输入个数是没限制的，对应的NAND，输入也是没有限制的。而实际中，商用的NAND门电路，输入个数一般是2,3或4个，以方便用于14针脚或16针脚的封装。</para>
+        </sect3>
+        
+        <sect3><title>NOR或非门</title>
+            <para>NOR门电路，是OR门电路的取反。</para>
+            <para>对于OR门电路，任何一个输入是1的话，那么输出都是1，而NOR门电路，正是对此输出取反，即任何一个输入都是1，那么输出都是0。</para>
+            <para>从符号表示上来说，NOR功能用一个加号“+”，和一个对于所有输入之上的上横线来表示取反，所组成。</para>
+            <para>对应的图表如下：</para>
+            <figure id="fg.nor_gate"><title>NOR或非门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/nor_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/nor_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>同理，NOR符号中的圆圈，也是表示取反的功能。</para>
+            <para>NOR功能也是允许输入是任意多个。而实际上也是一般商用的NOR门电路，输入个数是2,3或4个，以适用于标准的IC封装。</para>
+        </sect3>
+        
+        <sect3><title>XOR异或门</title>
+            <para>异或功能，是个从基本的OR功能演化出来的，一个有趣的且有用的变体。用语言表达异或的功能，可以说成是“要么A，要么B，但不能同时要两者”。XOR门电路，只有当两个输入是不相同的，输出才是1。如果两个输入是相同的，那么输出是逻辑0。</para>
+            <para>XOR符号，也是从标准的OR功能演化出来的。其包含了一个加号“+”，然后周围用个圆圈包围起来，参见下图：</para>
+            <figure id="fg.xor_gate"><title>XOR异或门</title>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/xor_gate.png" align="left" scalefit="0" width="100%" />
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/xor_gate.png" align="center" scalefit="0" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>不像标准的OR/NOR和AND/NAND的功能，XOR功能始终是只有两个输入，商用的XOR门电路，也同样只有两个输入。4个XOR门电路，可以合并进入对应的14针脚的封装。</para>
+            <para>NOR功能也是允许输入是任意多个。而实际上也是一般商用的NOR门电路，输入个数是2,3或4个，以适用于标准的IC封装。</para>
+        </sect3>
+        
+        <para>上述介绍的三种衍化的门电路，只是众多衍化的门电路中的很小一部分。</para>
+        <para>不过，这三个，又算是其他衍化的门电路的基础。</para>
+        <para>接下来的内容，将会介绍，从XOR功能衍化出来的一些门电路。这也正好开始了对于实际应用中所用到的门电路的介绍了，去看看，如果用这些简单的门电路来合并出，计算机中的各种可能的复杂组合，实现对应的功能。</para>
+    </sect2>
+    
+    <sect2><title>异或（XOR）功能的更多的衍生功能</title>
+        <para>前面内容中，我们提到，XOR可以用文字描述为“要么A，要么B，但不是两者同时”。</para>
+        <para>在现实的数字逻辑中，此句可以有几种不同的，更精确的表述方法。</para>
+        <para>此处，不去深入介绍关于这类设备的真值表（Truth Table）和图形化表示。我们仍然把更多精力放在此句的进一步的语言表述上：“A取反和B，或者是A和B取反”。</para>
+        <para>此句用对应的电路来描述，见下图：</para>
+        <figure id="fg.xor_gate_circuit"><title>异或门的电路图表示</title>
+            <mediaobject>
+                <imageobject role="html">
+                    <imagedata fileref="images/xor_gate_circuit.png" align="left" scalefit="0" width="100%" />
+                </imageobject>
+                <imageobject role="fo">
+                    <imagedata fileref="images/xor_gate_circuit.png" align="center" scalefit="0" />
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para></para>
+        <para></para>
+    </sect2>
+    
+    <sect2><title>二进制加法</title>
+        <para></para>
+    </sect2>
+
+    <sect2><title>负数和二进制减法</title>
+        <para></para>
+    </sect2>
+    
+    <sect2><title>多路转换器（Multiplexer）</title>
+        <para></para>
+    </sect2>
+    
+    <sect2><title>解码器/多路选择器</title>
+        <para></para>
+    </sect2>
+    
+    <sect2><title>二进制代数</title>
+        <para></para>
+    </sect2>
+</sect1>
+
+<sect1><title>时序逻辑（Sequential Logic）</title>
+    <para></para>
+</sect1>
+
+<sect1><title>备选的触发器电路</title>
+    <para></para>
+</sect1>
+
+<sect1><title>计数器</title>
+    <para></para>
+</sect1>
+
+<sect1><title>寄存器</title>
+    <para></para>
+</sect1>
+
+<sect1><title>555记时器</title>
+    <para></para>
+</sect1>
+
+</chapter>
